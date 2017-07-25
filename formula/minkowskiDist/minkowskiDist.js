@@ -46,12 +46,12 @@ const minkowskiDist = (user1, user2, p) =>
 console.log(
 
   // N D pair test with manhattanDist
-  minkowskiDist(h, j, 1) === manhattanDist(h, j), // => 7.500
-  minkowskiDist(a, b, 1) === manhattanDist(a, b), // => 330.860
-  minkowskiDist(c, d, 1) === manhattanDist(c, d), // => 1.010
+  minkowskiDist(h, j, 1) === manhattanDist(h, j), // => true ~ [because the both equal the same distance: 7.500]
+  minkowskiDist(a, b, 1) === manhattanDist(a, b), // => true ~ [because the both equal the same distance: 330.860]
+  minkowskiDist(c, d, 1) === manhattanDist(c, d), // => true ~ [because the both equal the same distance: 1.010]
 
   // N D pair test with euclideanDist
-  minkowskiDist(h, j, 2) === euclideanDist(h, j), // => 4.387
-  minkowskiDist(a, b, 2) === euclideanDist(a, b), // => 141.180
-  minkowskiDist(c, d, 2) === euclideanDist(c, d) // => 1.000
+  minkowskiDist(h, j, 2) === euclideanDist(h, j), // => true ~ [because the both equal the same distance: 4.387]
+  minkowskiDist(a, b, 2) === euclideanDist(a, b), // => true ~ [because the both equal the same distance: 141.180]
+  minkowskiDist(c, d, 2) === euclideanDist(c, d) // => true ~ [because the both equal the same distance: 1.000]
 );
