@@ -46,9 +46,9 @@ const minkowskiDist = (user1, user2, p) =>
 console.log(
 
   // N D pair test with manhattanDist
-  minkowskiDist(h, j, 1) === manhattanDist(h, j), // => 1.414
-  minkowskiDist(a, b, 1) === manhattanDist(a, b), // => 68.000
-  minkowskiDist(c, d, 1) === manhattanDist(c, d), // => 72.533
+  minkowskiDist(h, j, 1) === manhattanDist(h, j), // => 7.500
+  minkowskiDist(a, b, 1) === manhattanDist(a, b), // => 330.860
+  minkowskiDist(c, d, 1) === manhattanDist(c, d), // => 1.010
 
   // N D pair test with euclideanDist
   minkowskiDist(h, j, 2) === euclideanDist(h, j), // => 4.387
