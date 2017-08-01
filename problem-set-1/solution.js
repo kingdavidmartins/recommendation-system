@@ -13,9 +13,7 @@ const minkowskiDist = (user1, user2, p) =>
     .toFixed(3);
 
 // function that maps the user's rating number
-const userRating = (usrName) =>
-  usrName
-    .map((obj) => obj.number);
+const userRating = (usrName) => _.map(usrName, (rating) => rating.number);
 
 // syncRatings is a function that take 2 arguments: (userConst, user2)
 // userConst: is the consistent user that will be compared with all other users in the set
@@ -71,28 +69,45 @@ const simUserSort = (mainUser, userSet, p) =>
     .value()
     .sort((a, b) => a[1] - b[1]);
 
-// TEST 1
+
 /*
-  manhattan(users['Hailey'], users['Veronica']) ==> 2.0
-  manhattan(users['Hailey'], users['Jordyn']) == > 7.5
->>> */
-console.log(
+  Test 1: Write a function that returns the Manhattan distance between the follwoing 2 user's
+    - Hailey & Veronica
+    - Hailey & Jordyn
 
-);
+  Example:
+
+    manhattan(users['Hailey'], users['Veronica']) ==> 2.0
+    manhattan(users['Hailey'], users['Jordyn']) == > 7.5
+*/
+
+// Test 1 - Solution
 console.log(
-  'Manhattan Distance'
-);
-console.log(
-  simUserSort('Hailey', users, 1)
+  'Manhattan Distance between Hailey & Veronica ==> '
+    + minkowskiDist(
+        userRating(syncRatings('Hailey', 'Veronica')[0]),
+        userRating(syncRatings('Hailey', 'Veronica')[1]),
+        1)
+    + '\n'
+    +
+
+  'Manhattan Distance between Hailey & Jordyn ==> '
+    + minkowskiDist(
+        userRating(syncRatings('Hailey', 'Jordyn')[0]),
+        userRating(syncRatings('Hailey', 'Jordyn')[1]),
+        1)
+    + '\n\n'
 );
 
-console.log(
-  '\n\n'
-);
+/*
+  Test 2: Write a function that returns an array/set of users with their name and ratings compared to Hailey
 
+  Example:
+
+  computeNearestNeighbor("Hailey", users) =>> [(2.0, ''Veronica'), (4.0, 'Chan'),(4.0, 'Sam'), (4.5, 'Dan'), (5.0, 'Angelica'), (5.5, 'Bill'), (7.5, 'Jordyn')]
+*/
+
+// Test 2 - Solution
 console.log(
-  'Euclidean Distance'
-);
-console.log(
-  simUserSort('Hailey', users, 2)
+  simUserSort('Hailey', users, 1) // => [ [ 'Veronica', '2.000' ], [ 'Chan', '4.000' ], [ 'Sam', '4.000' ], [ 'Dan', '4.500' ], [ 'Angelica', '5.000' ], [ 'Bill', '5.500' ], [ 'Jordyn', '7.500' ] ]
 );
