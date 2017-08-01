@@ -12,9 +12,9 @@ assume userX is likely to enjoy the band as well. You will be tasked with solvin
 Problem
 ---------
 
-Problem -Test 1
+###Problem - Test 2
 ```
-Test 1: Write a function that returns the Manhattan distance between the follwoing 2 user's
+Write a function that returns the Manhattan distance between the follwoing 2 user's
   - Hailey & Veronica
   - Hailey & Jordyn
 
@@ -23,9 +23,9 @@ Example:
   manhattan(users['Hailey'], users['Jordyn']) == > 7.5
 ```
 
-Problem -Test 1
+###Problem - Test 2
 ```
-Test 2: Write a function that returns an array/set of users with their name and ratings compared to Hailey sorted by the ratings from least to greatest
+Write a function that returns an array/set of users with their name and ratings compared to Hailey sorted by the ratings from least to greatest
 
 Example:
   computeNearestNeighborManhattan("Hailey", users) =>> [(2.0, ''Veronica'), (4.0, 'Chan'),(4.0, 'Sam'), (4.5, 'Dan'), (5.0, 'Angelica'), (5.5, 'Bill'), (7.5, 'Jordyn')]
