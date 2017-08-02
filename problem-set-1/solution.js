@@ -60,9 +60,9 @@ const simUserSort = (mainUser, userSet, p) =>
     .sort((a, b) => a[1] - b[1]);
 
 // filter out the users cannot recommend since the user listened to all the band the mainUser listened it to
-const getSimNewRatings = (mUser) =>
+const getSimNewRatings = (mUser, p) =>
   _.chain(
-    simUserSort(mUser, users, 1)
+    simUserSort(mUser, users, p)
       .map((value) => value[0]))
     .filter((possibleUser) =>
       _.find(users, {name: possibleUser})
@@ -77,8 +77,8 @@ const getSimNewRatings = (mUser) =>
     .value()[0];
 
 // recommend artist the user never listened to based on the nearest neighbor likes sorted from highest rating to lowesrt
-const recommend = (mUser, userSet) =>
-_.find(userSet, {name: getSimNewRatings(mUser)})
+const recommend = (mUser, userSet, p) =>
+_.find(userSet, {name: getSimNewRatings(mUser, p)})
   .ratings
   .filter((obj) =>
     _.find(userSet, {name: mUser})
@@ -98,5 +98,5 @@ _.find(userSet, {name: getSimNewRatings(mUser)})
 
 // Problem 3 - Solution
 console.log(
-  recommend('Sam', users) // => [ [ 'Deadmau5', '1.000' ] ]
+  recommend('Chan', users, 1) // => [ [ 'Deadmau5', '1.000' ] ]
 );

@@ -70,6 +70,7 @@ console.log(
 ### Solution - Test 2
 ```javascript
 console.log(
+  'Manhattan Distance of Hailey related to all the other users\n',
   simUserSort('Hailey', users, 1) // => [ [ 'Veronica', '2.000' ], [ 'Chan', '4.000' ], [ 'Sam', '4.000' ], [ 'Dan', '4.500' ], [ 'Angelica', '5.000' ], [ 'Bill', '5.500' ], [ 'Jordyn', '7.500' ] ]
 );
 ```
@@ -77,21 +78,24 @@ console.log(
 ### Solution 1
 ```javascript
 console.log(
-  recommend('Hailey', users) // => [ [ 'Phoenix', 4 ], [ 'Blues Traveler', 3 ], [ 'Slightly Stoopid', 2.5 ] ]
+  // Recommendation using the Manhattan distance to find the nearest neighbor
+  recommend('Hailey', users, 1) // => [ [ 'Phoenix', 4 ], [ 'Blues Traveler', 3 ], [ 'Slightly Stoopid', 2.5 ] ]
 );
 ```
 
 ### Solution 2
 ```javascript
 console.log(
-  recommend('Chan', users) // => [ [ 'The Strokes', '4.000' ], [ 'Vampire Weekend', '1.000' ] ]
+  // Recommendation using the Manhattan distance to find the nearest neighbor
+  recommend('Chan', users, 1) // => [ [ 'The Strokes', '4.000' ], [ 'Vampire Weekend', '1.000' ] ]
 );
 ```
 
 ### Solution 3
 ```javascript
 console.log(
-  recommend('Sam', users) // => [ [ 'Deadmau5', '1.000' ] ]
+  // Recommendation using the Manhattan distance to find the nearest neighbor
+  recommend('Sam', users, 1) // => [ [ 'Deadmau5', '1.000' ] ]
 );
 ```
 
