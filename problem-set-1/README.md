@@ -47,6 +47,14 @@ Example:
   recommend('Chan', users) => [('The Strokes', 4.0), ('Vampire Weekend', 1.0)]
 ```
 
+### Problem 3
+```
+Problem 3: Write a function that returns recommendations for Sam. As in artist her nearest neighbor would recommend to her if they personally knew each other
+
+Example:
+  recommend('Sam', users) => [ [ 'Deadmau5', '1.000' ] ]
+```
+
 Solution
 ---------
 
@@ -77,6 +85,13 @@ console.log(
 ```javascript
 console.log(
   recommend('Chan', users) // => [ [ 'The Strokes', '4.000' ], [ 'Vampire Weekend', '1.000' ] ]
+);
+```
+
+### Solution 3
+```javascript
+console.log(
+  recommend('Sam', users) // => [ [ 'Deadmau5', '1.000' ] ]
 );
 ```
 

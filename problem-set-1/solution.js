@@ -76,7 +76,7 @@ const getSimNewRatings = (mUser) =>
         .length > 0)
     .value()[0];
 
-// recommend artist the user never listened to based on the nearest neighbor likes
+// recommend artist the user never listened to based on the nearest neighbor likes sorted from highest rating to lowesrt
 const recommend = (mUser, userSet) =>
 _.find(userSet, {name: getSimNewRatings(mUser)})
   .ratings
@@ -89,14 +89,14 @@ _.find(userSet, {name: getSimNewRatings(mUser)})
   .sort((a, b) => b[1] - a[1]);
 
 /*
-  Problem 2: Write a function that returns recommendations for Chan. As in artist her nearest neighbor would recommend to her if they personally knew each other
+  Problem 3: Write a function that returns recommendations for Sam. As in artist her nearest neighbor would recommend to her if they personally knew each other
 
   Example:
 
-    recommend('Chan', users) =>  [ [ 'The Strokes', '4.000' ], [ 'Vampire Weekend', '1.000' ] ]
+    recommend('Sam', users) =>  [ [ 'Deadmau5', '1.000' ] ]
 */
 
-// Problem 2 - Solution
+// Problem 3 - Solution
 console.log(
-  recommend('Chan', users) // => [ [ 'The Strokes', '4.000' ], [ 'Vampire Weekend', '1.000' ] ]
+  recommend('Sam', users) // => [ [ 'Deadmau5', '1.000' ] ]
 );
