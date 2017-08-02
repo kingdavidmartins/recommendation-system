@@ -15,15 +15,7 @@ const minkowskiDist = (user1, user2, p) =>
 // function that maps the user's rating number
 const userRating = (usrName) => _.map(usrName, (rating) => rating.number);
 
-// syncRatings is a function that take 2 arguments: (userConst, user2)
-// userConst: is the consistent user that will be compared with all other users in the set
-// user2: is all the different users that will be compared against the consistent user
-// syncRatings is a function that compares all ratings of the potential users with N Dimensions
-// by filtering the ratings that does not match the comparator
-// i.e if { user: john, ratings: [ {artist: a, number: 4}, {artist: b, number: 3} ]}
-// and { user: doe, ratings: [ {artist: a, number: 1}]}
-// I will only wnat to check the minkowski distance of what they both rated
-// which should end up computing the minkowski distance their 2 ratings: [ {artist: a, number: 1}]
+// match users ratings
 const syncRatings = (userConst, user2) =>
   [
     _.find(users, { name: userConst})
@@ -47,67 +39,64 @@ const syncRatings = (userConst, user2) =>
           .indexOf(obj.artist) !== -1)
   ];
 
-// simUserSort is a function that takes 3 arguments. the 1st is mainUser
-// which is user you want to compare to the different set of users. The 2nd is
-// the userSet. The 3rd is p which stands for the correlation coefficient which will be passed
-// through when using the minkowskiDist() function. It will return an 2 Dimensional with each element represendting an array with 2 elements.
-// the 1st element standing for the name of the user from the set.
-// the 2nd element standing for the distance from the mainUser from the user ~ (which is represented by the name in the 1st eleent)
-// the every element is then sorted from least to greatest which make the 1st element the nearest neighbor
+// filter out unrelated ratings then compare the distance
+const syncUserDist = (mainUser, passedUserName, p) =>
+  minkowskiDist(
+    userRating(syncRatings(mainUser, passedUserName)[0]),
+    userRating(syncRatings(mainUser, passedUserName)[1]),
+    p);
+
+// sort the distance from least to greatest
 const simUserSort = (mainUser, userSet, p) =>
   _.chain(userSet)
     .filter((obj) => obj.name !== mainUser)
     .map((obj) =>
       [
         obj.name,
-        minkowskiDist(
-          userRating(syncRatings(mainUser, obj.name)[0]),
-          userRating(syncRatings(mainUser, obj.name)[1]),
-          p)
+        syncUserDist(mainUser, obj.name, p)
       ]
     )
     .value()
     .sort((a, b) => a[1] - b[1]);
 
+// filter out the users cannot recommend since the user listened to all the band the mainUser listened it to
+const getSimNewRatings = (mUser) =>
+  _.chain(
+    simUserSort(mUser, users, 1)
+      .map((value) => value[0]))
+    .filter((possibleUser) =>
+      _.find(users, {name: possibleUser})
+        .ratings
+        .map((obj) => obj.artist)
+        .filter((artist) =>
+          _.find(users, {name: mUser})
+            .ratings
+            .map((mainObj) => mainObj.artist)
+            .indexOf(artist) === -1)
+        .length > 0)
+    .value()[0];
+
+// recommend artist the user never listened to based on the nearest neighbor likes
+const recommend = (mUser, userSet) =>
+_.find(userSet, {name: getSimNewRatings(mUser)})
+  .ratings
+  .filter((obj) =>
+    _.find(userSet, {name: mUser})
+      .ratings
+      .map((mainObj) => mainObj.artist)
+      .indexOf(obj.artist) === -1)
+  .map((obj) => [obj.artist, obj.number])
+  .sort((a, b) => b[1] - a[1]);
 
 /*
-  Test 1: Write a function that returns the Manhattan distance between the follwoing 2 user's
-    - Hailey & Veronica
-    - Hailey & Jordyn
+  Problem 1: Write a function that returns recommendations for Hailey. As in artist her nearest neighbor would recommend to her if they personally knew each other
 
   Example:
 
-    manhattan(users['Hailey'], users['Veronica']) ==> 2.0
-    manhattan(users['Hailey'], users['Jordyn']) == > 7.5
+    recommend('Hailey', users) =>  [('Phoenix', 4.0), ('Blues Traveler', 3.0), ('Slightly Stoopid', 2.5)]
 */
 
-// Test 1 - Solution
+// Problem 1 - Solution
 console.log(
-  'Manhattan Distance between Hailey & Veronica ==> '
-    + minkowskiDist(
-        userRating(syncRatings('Hailey', 'Veronica')[0]),
-        userRating(syncRatings('Hailey', 'Veronica')[1]),
-        1)
-    + '\n'
-    +
-
-  'Manhattan Distance between Hailey & Jordyn ==> '
-    + minkowskiDist(
-        userRating(syncRatings('Hailey', 'Jordyn')[0]),
-        userRating(syncRatings('Hailey', 'Jordyn')[1]),
-        1)
-    + '\n\n'
-);
-
-/*
-  Test 2: Write a function that returns an array/set of users with their name and ratings compared to Hailey
-
-  Example:
-
-  computeNearestNeighbor("Hailey", users) =>> [(2.0, ''Veronica'), (4.0, 'Chan'),(4.0, 'Sam'), (4.5, 'Dan'), (5.0, 'Angelica'), (5.5, 'Bill'), (7.5, 'Jordyn')]
-*/
-
-// Test 2 - Solution
-console.log(
-  simUserSort('Hailey', users, 1) // => [ [ 'Veronica', '2.000' ], [ 'Chan', '4.000' ], [ 'Sam', '4.000' ], [ 'Dan', '4.500' ], [ 'Angelica', '5.000' ], [ 'Bill', '5.500' ], [ 'Jordyn', '7.500' ] ]
+  recommend('Hailey', users) // => [ [ 'Phoenix', 4 ], [ 'Blues Traveler', 3 ], [ 'Slightly Stoopid', 2.5 ] ]
 );

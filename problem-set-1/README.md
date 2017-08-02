@@ -12,7 +12,7 @@ assume userX is likely to enjoy the band as well. You will be tasked with solvin
 Problem
 ---------
 
-###Problem - Test 2
+### Problem - Test 2
 ```
 Write a function that returns the Manhattan distance between the follwoing 2 user's
   - Hailey & Veronica
@@ -23,7 +23,7 @@ Example:
   manhattan(users['Hailey'], users['Jordyn']) == > 7.5
 ```
 
-###Problem - Test 2
+### Problem - Test 2
 ```
 Write a function that returns an array/set of users with their name and ratings compared to Hailey sorted by the ratings from least to greatest
 
@@ -31,10 +31,18 @@ Example:
   computeNearestNeighborManhattan("Hailey", users) =>> [(2.0, ''Veronica'), (4.0, 'Chan'),(4.0, 'Sam'), (4.5, 'Dan'), (5.0, 'Angelica'), (5.5, 'Bill'), (7.5, 'Jordyn')]
 ```
 
+### Problem 1
+```
+Problem 1: Write a function that returns recommendations for Hailey. As in artist her nearest neighbor would recommend to her if they personally knew each other
+
+Example:
+  recommend('Hailey', users) =>  [('Phoenix', 4.0), ('Blues Traveler', 3.0), ('Slightly Stoopid', 2.5)]
+```
+
 Solution
 ---------
 
-Solution - Test 1
+### Solution - Test 1
 ```javascript
 console.log(
   'Manhattan Distance between Hailey & Veronica ==> '
@@ -54,15 +62,19 @@ console.log(
 );
 ```
 
-Solution - Test 2
+### Solution - Test 2
 ```javascript
 console.log(
   simUserSort('Hailey', users, 1) // => [ [ 'Veronica', '2.000' ], [ 'Chan', '4.000' ], [ 'Sam', '4.000' ], [ 'Dan', '4.500' ], [ 'Angelica', '5.000' ], [ 'Bill', '5.500' ], [ 'Jordyn', '7.500' ] ]
 );
 ```
 
-
-
+### Solution 1
+```javascript
+console.log(
+  recommend('Hailey', users) // => [ [ 'Phoenix', 4 ], [ 'Blues Traveler', 3 ], [ 'Slightly Stoopid', 2.5 ] ]
+);
+```
 
 # References
 [Guide to Data Mining](http://guidetodatamining.com)
