@@ -45,20 +45,9 @@ Solution
 ### Solution - Test 1
 ```javascript
 console.log(
-  'Manhattan Distance between Hailey & Veronica ==> '
-    + minkowskiDist(
-        userRating(syncRatings('Hailey', 'Veronica')[0]),
-        userRating(syncRatings('Hailey', 'Veronica')[1]),
-        1) // => 2.0
-    + '\n'
+  `Manhattan Distance between Hailey & Veronica ==> ${syncUserDist('Hailey', 'Veronica', 1)}\n` // => 2.0
     +
-
-  'Manhattan Distance between Hailey & Jordyn ==> '
-    + minkowskiDist(
-        userRating(syncRatings('Hailey', 'Jordyn')[0]),
-        userRating(syncRatings('Hailey', 'Jordyn')[1]),
-        1) // => 7.5
-    + '\n\n'
+  `Manhattan Distance between Hailey & Jordyn ==> ${syncUserDist('Hailey', 'Jordyn', 1)}` // => 7.5
 );
 ```
 
