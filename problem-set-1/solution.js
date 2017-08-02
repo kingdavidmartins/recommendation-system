@@ -85,18 +85,18 @@ _.find(userSet, {name: getSimNewRatings(mUser)})
       .ratings
       .map((mainObj) => mainObj.artist)
       .indexOf(obj.artist) === -1)
-  .map((obj) => [obj.artist, obj.number])
+  .map((obj) => [obj.artist, obj.number.toFixed(3)])
   .sort((a, b) => b[1] - a[1]);
 
 /*
-  Problem 1: Write a function that returns recommendations for Hailey. As in artist her nearest neighbor would recommend to her if they personally knew each other
+  Problem 2: Write a function that returns recommendations for Chan. As in artist her nearest neighbor would recommend to her if they personally knew each other
 
   Example:
 
-    recommend('Hailey', users) =>  [('Phoenix', 4.0), ('Blues Traveler', 3.0), ('Slightly Stoopid', 2.5)]
+    recommend('Chan', users) =>  [ [ 'The Strokes', '4.000' ], [ 'Vampire Weekend', '1.000' ] ]
 */
 
-// Problem 1 - Solution
+// Problem 2 - Solution
 console.log(
-  recommend('Hailey', users) // => [ [ 'Phoenix', 4 ], [ 'Blues Traveler', 3 ], [ 'Slightly Stoopid', 2.5 ] ]
+  recommend('Chan', users) // => [ [ 'The Strokes', '4.000' ], [ 'Vampire Weekend', '1.000' ] ]
 );
