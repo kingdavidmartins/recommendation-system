@@ -98,5 +98,5 @@ _.find(userSet, {name: getSimNewRatings(mUser, p)})
 
 // Problem 3 - Solution
 console.log(
-  recommend('Chan', users, 1) // => [ [ 'Deadmau5', '1.000' ] ]
+  recommend('Sam', users, 1) // => [ [ 'Deadmau5', '1.000' ] ]
 );
