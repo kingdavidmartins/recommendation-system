@@ -76,6 +76,35 @@ const getSimNewRatings = (mUser, p) =>
         .length > 0)
     .value()[0];
 
+const pearsonCoeff = (x, y) =>
+  (
+    _.chain(x)
+      .map((num, index) => num * y[index])
+      .reduce((a, b) => a + b)
+      .value()
+    - (x.reduce((a, b) => a + b) * y.reduce((a, b) => a + b)) / x.length)
+    /
+    (
+      Math.sqrt(
+        _.chain(x)
+          .map((num) => Math.pow(num, 2))
+          .reduce((a, b) => a + b)
+          .value()
+        - (Math.pow(x.reduce((a, b) => a + b), 2) / x.length))
+      * Math.sqrt(
+          _.chain(y)
+            .map((num) => Math.pow(num, 2))
+            .reduce((a, b) => a + b)
+            .value()
+          - (Math.pow(y.reduce((a, b) => a + b), 2) / y.length))
+      );
+
+const pearson = (user1, user2) =>
+  pearsonCoeff(
+    userRating(syncRatings(user1, user2)[0]),
+    userRating(syncRatings(user1, user2)[1])
+  );
+
 // recommend artist the user never listened to based on the nearest neighbor likes sorted from highest rating to lowesrt
 const recommend = (mUser, userSet, p) =>
 _.find(userSet, {name: getSimNewRatings(mUser, p)})
@@ -89,14 +118,21 @@ _.find(userSet, {name: getSimNewRatings(mUser, p)})
   .sort((a, b) => b[1] - a[1]);
 
 /*
-  Problem 3: Write a function that returns recommendations for Sam. As in artist her nearest neighbor would recommend to her if they personally knew each other
+  Problem 4: Write a function that returns the Pearson Correlation Coefficient for the following users
+    - Angelica and Bill
+    - Angelica and Hailey
+    - Angelica and Jordyn
 
   Example:
 
-    recommend('Sam', users) =>  [ [ 'Deadmau5', '1.000' ] ]
+  pearson(users['Angelica'], users['Bill']) ==> -0.90405349906826993
+  pearson(users['Angelica'], users['Hailey']) ==> 0.42008402520840293
+  pearson(users['Angelica'], users['Jordyn']) ==> 0.76397486054754316
 */
 
-// Problem 3 - Solution
+// Problem 4 - Solution
 console.log(
-  recommend('Sam', users, 1) // => [ [ 'Deadmau5', '1.000' ] ]
+  pearson('Angelica', 'Bill'), // ==> -0.9040534990682699
+  pearson('Angelica', 'Hailey'), // ==> 0.42008402520840293
+  pearson('Angelica', 'Jordyn') // ==> 0.76397486054754316
 );

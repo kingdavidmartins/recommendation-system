@@ -55,6 +55,20 @@ Example:
   recommend('Sam', users) => [ [ 'Deadmau5', '1.000' ] ]
 ```
 
+### Problem 4
+```
+Problem 4: Write a function that returns the Pearson Correlation Coefficient for the following users
+  - Angelica and Bill
+  - Angelica and Hailey
+  - Angelica and Jordyn
+
+Example:
+
+pearson(users['Angelica'], users['Bill']) ==> -0.90405349906826993
+pearson(users['Angelica'], users['Hailey']) ==> 0.42008402520840293
+pearson(users['Angelica'], users['Jordyn']) ==> 0.76397486054754316
+```
+
 Solution
 ---------
 
@@ -97,6 +111,16 @@ console.log(
   // Recommendation using the Manhattan distance to find the nearest neighbor
   recommend('Sam', users, 1) // => [ [ 'Deadmau5', '1.000' ] ]
 );
+```
+
+### Solution 4
+```javascript
+console.log(
+  pearson('Angelica', 'Bill'), // ==> -0.9040534990682699
+  pearson('Angelica', 'Hailey'), // ==> 0.42008402520840293
+  pearson('Angelica', 'Jordyn') // ==> 0.76397486054754316
+);
+
 ```
 
 # References
