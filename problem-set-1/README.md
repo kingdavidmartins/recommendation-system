@@ -11,7 +11,7 @@ assume userX is likely to enjoy the band as well. You will be tasked with solvin
 ```javascript
 // Problem
 //
-// Problem - Test 2
+// Problem - Test 1
 // Write a function that returns the Manhattan distance between the follwoing 2 user's
 //   - Hailey & Veronica
 //   - Hailey & Jordyn
@@ -20,46 +20,6 @@ assume userX is likely to enjoy the band as well. You will be tasked with solvin
   manhattan(users['Hailey'], users['Veronica']) ==> 2.0
   manhattan(users['Hailey'], users['Jordyn']) == > 7.5
 //
-// Problem - Test 2
-// Write a function that returns an array/set of users with their name and ratings compared to Hailey sorted by the ratings from least to greatest
-//
-// Example:
-  computeNearestNeighborManhattan('Hailey', users) => [(2.0, 'Veronica'), (4.0, 'Chan'),(4.0, 'Sam'), (4.5, 'Dan'), (5.0, 'Angelica'), (5.5, 'Bill'), (7.5, 'Jordyn')];
-
-// Problem 1
-// Write a function that returns recommendations for Hailey. As in artist her nearest neighbor would recommend to her if they personally knew each other
-//
-// Example:
-  recommend('Hailey', users) =>  [('Phoenix', 4.0), ('Blues Traveler', 3.0), ('Slightly Stoopid', 2.5)]
-
-// Problem 2
-//
-// Write a function that returns recommendations for Chan. As in artist her nearest neighbor would recommend to her if they personally knew each other
-//
-// Example:
-  recommend('Chan', users) => [('The Strokes', 4.0), ('Vampire Weekend', 1.0)]
-//
-// Problem 3
-//
-// Write a function that returns recommendations for Sam. As in artist her nearest neighbor would recommend to her if they personally knew each other
-//
-// Example:
-  recommend('Sam', users) => [ [ 'Deadmau5', '1.000' ] ]
-//
-// Problem 4
-// Write a function that returns the Pearson Correlation Coefficient for the following users
-//   - Angelica and Bill
-//   - Angelica and Hailey
-//   - Angelica and Jordyn
-//
-// Example:
-
-pearson(users['Angelica'], users['Bill']) ==> -0.90405349906826993
-pearson(users['Angelica'], users['Hailey']) ==> 0.42008402520840293
-pearson(users['Angelica'], users['Jordyn']) ==> 0.76397486054754316
-
-
-// Solution
 
 // Solution - Test 1
 console.log(
@@ -68,11 +28,23 @@ console.log(
   `Manhattan Distance between Hailey & Jordyn ==> ${syncUserDist('Hailey', 'Jordyn', 1)}` // => 7.5
 );
 
+// Problem - Test 2
+// Write a function that returns an array/set of users with their name and ratings compared to Hailey sorted by the ratings from least to greatest
+//
+// Example:
+  computeNearestNeighborManhattan('Hailey', users) => [(2.0, 'Veronica'), (4.0, 'Chan'),(4.0, 'Sam'), (4.5, 'Dan'), (5.0, 'Angelica'), (5.5, 'Bill'), (7.5, 'Jordyn')];
+
 // Solution - Test 2
 console.log(
   'Manhattan Distance of Hailey related to all the other users\n',
   simUserSort('Hailey', users, 1) // => [ [ 'Veronica', '2.000' ], [ 'Chan', '4.000' ], [ 'Sam', '4.000' ], [ 'Dan', '4.500' ], [ 'Angelica', '5.000' ], [ 'Bill', '5.500' ], [ 'Jordyn', '7.500' ] ]
 );
+
+// Problem 1
+// Write a function that returns recommendations for Hailey. As in artist her nearest neighbor would recommend to her if they personally knew each other
+//
+// Example:
+  recommend('Hailey', users) =>  [('Phoenix', 4.0), ('Blues Traveler', 3.0), ('Slightly Stoopid', 2.5)]
 
 // Solution 1
 console.log(
@@ -80,17 +52,44 @@ console.log(
   recommend('Hailey', users, 1) // => [ [ 'Phoenix', 4 ], [ 'Blues Traveler', 3 ], [ 'Slightly Stoopid', 2.5 ] ]
 );
 
+// Problem 2
+//
+// Write a function that returns recommendations for Chan. As in artist her nearest neighbor would recommend to her if they personally knew each other
+//
+// Example:
+  recommend('Chan', users) => [('The Strokes', 4.0), ('Vampire Weekend', 1.0)]
+//
+
 // Solution 2
 console.log(
   // Recommendation using the Manhattan distance to find the nearest neighbor
   recommend('Chan', users, 1) // => [ [ 'The Strokes', '4.000' ], [ 'Vampire Weekend', '1.000' ] ]
 );
 
+// Problem 3
+//
+// Write a function that returns recommendations for Sam. As in artist her nearest neighbor would recommend to her if they personally knew each other
+//
+// Example:
+  recommend('Sam', users) => [ [ 'Deadmau5', '1.000' ] ]
+//
+
 // Solution 3
 console.log(
   // Recommendation using the Manhattan distance to find the nearest neighbor
   recommend('Sam', users, 1) // => [ [ 'Deadmau5', '1.000' ] ]
 );
+
+// Problem 4
+// Write a function that returns the Pearson Correlation Coefficient for the following users
+//   - Angelica and Bill
+//   - Angelica and Hailey
+//   - Angelica and Jordyn
+//
+// Example:
+pearson(users['Angelica'], users['Bill']) ==> -0.90405349906826993
+pearson(users['Angelica'], users['Hailey']) ==> 0.42008402520840293
+pearson(users['Angelica'], users['Jordyn']) ==> 0.76397486054754316
 
 // Solution 4
 console.log(
