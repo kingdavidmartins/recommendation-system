@@ -24,7 +24,7 @@ assume userX is likely to enjoy the band as well. You will be tasked with solvin
 // Write a function that returns an array/set of users with their name and ratings compared to Hailey sorted by the ratings from least to greatest
 //
 // Example:
-  computeNearestNeighborManhattan('Hailey', users) => [(2.0, ''Veronica'), (4.0, 'Chan'),(4.0, 'Sam'), (4.5, 'Dan'), (5.0, 'Angelica'), (5.5, 'Bill'), (7.5, 'Jordyn')];
+  computeNearestNeighborManhattan('Hailey', users) => [(2.0, 'Veronica'), (4.0, 'Chan'),(4.0, 'Sam'), (4.5, 'Dan'), (5.0, 'Angelica'), (5.5, 'Bill'), (7.5, 'Jordyn')];
 
 // Problem 1
 // Write a function that returns recommendations for Hailey. As in artist her nearest neighbor would recommend to her if they personally knew each other
