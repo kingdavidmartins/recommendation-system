@@ -116,23 +116,3 @@ _.find(userSet, {name: getSimNewRatings(mUser, p)})
       .indexOf(obj.artist) === -1)
   .map((obj) => [obj.artist, obj.number.toFixed(3)])
   .sort((a, b) => b[1] - a[1]);
-
-/*
-  Problem 4: Write a function that returns the Pearson Correlation Coefficient for the following users
-    - Angelica and Bill
-    - Angelica and Hailey
-    - Angelica and Jordyn
-
-  Example:
-
-  pearson(users['Angelica'], users['Bill']) ==> -0.90405349906826993
-  pearson(users['Angelica'], users['Hailey']) ==> 0.42008402520840293
-  pearson(users['Angelica'], users['Jordyn']) ==> 0.76397486054754316
-*/
-
-// Problem 4 - Solution
-console.log(
-  pearson('Angelica', 'Bill'), // ==> -0.9040534990682699
-  pearson('Angelica', 'Hailey'), // ==> 0.42008402520840293
-  pearson('Angelica', 'Jordyn') // ==> 0.76397486054754316
-);
