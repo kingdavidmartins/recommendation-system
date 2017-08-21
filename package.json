@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kingdavidmartins/recommendation-system#readme",
   "dependencies": {
+    "csvtojson": "^1.1.7",
     "lodash": "^4.17.4"
   }
 }
