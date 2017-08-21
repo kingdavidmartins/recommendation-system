@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const fs = require('fs');
 const users = JSON.parse(fs.readFileSync('movieLenTransform100k.txt', 'utf8'));
+const movieSet = JSON.parse(fs.readFileSync('movieTitleTransform100k.txt', 'utf8'));
 
 // function to compute the minkowski distance
 const minkowskiDist = (user1, user2, p) =>
@@ -119,7 +120,11 @@ _.find(userSet, {name: getSimNewRatings(mUser, p)})
       .map((mainObj) => mainObj.movie)
       .indexOf(obj.movie) === -1)
   .map((obj) => [obj.movie, obj.number.toFixed(3)])
-  .sort((a, b) => b[1] - a[1]);
+  .sort((a, b) => b[1] - a[1])
+  .map((obj) => [
+    _.find(movieSet, {movieId: obj[0]}).name,
+    obj[1]
+  ]);
 
 console.log(
   recommend(13, users, 2)
