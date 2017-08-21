@@ -37,6 +37,23 @@ fs.readFile('movieLenRaw100k.js', 'utf8', (err, data) => {
 });
 
 
+// reads movieTitleRaw100k.js process and writes to movieTitleTransform100k.txt
+fs.readFile('movieTitleRaw100k.js', 'utf8', (err, data) => {
+
+  // transform movieTitleRaw100k to a obj with just movieId & name
+  let movieTitleData = _.chain(objify(data))
+    .map((obj) =>
+      structNewObj({
+        movieId: obj.movieId,
+        name: obj.title
+      }))
+    .value();
+
+  // write movieTitleData to movieTitleTransform100k.txt
+  fs.writeFile('movieTitleTransform100k.txt', JSON.stringify(movieTitleData), (err) =>
+    console.log(err ? `Err: ${err}` : `movieTitleTransform100k was saved`));
+});
+
 
 // reads movieLenRaw20M.js process and writes to movieLenTransform20M.txt
 fs.readFile('movieLenRaw20M.js', 'utf8', (err, data) => {
