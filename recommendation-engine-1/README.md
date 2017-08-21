@@ -19,10 +19,6 @@ The following main data sources were used for this project.
 
 The MovieLens movie ratings data is provided by GroupLens Research with datasets ranging in size from 100,000 ~ 26,000,000. The "Latest" dataset includes more recent ratings data from users up to 2016.
 
-Permalink (20M): http://grouplens.org/datasets/movielens/20m/
-Permalink (Latest): http://grouplens.org/datasets/movielens/latest/
-
-
 <!-- ### *JavaScript Implementation* -->
 
 
