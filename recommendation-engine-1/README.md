@@ -3,10 +3,10 @@
 ## *Collaborative Filtering + Functional Programming + JavaScript*
 
 
-## *Why?*
+### *Why?*
 
 
-## *Datasets*
+### *Datasets*
 
 The following main data sources were used for this project.
 
@@ -15,13 +15,13 @@ The following main data sources were used for this project.
 - [MovieLens - Largest 26,000,000 ratings](http://grouplens.org/datasets/movielens/latest/)
 
 
-### *MovieLens*
+#### *MovieLens*
 
 The MovieLens movie ratings data is provided by GroupLens Research with datasets ranging in size from 100,000 ~ 26,000,000. The "Latest" dataset includes more recent ratings data from users up to 2016.
 
 <!-- ### *JavaScript Implementation* -->
 
-
+### *Benchmark*
 
 ##### *Dataset ~ 100,000*
 
