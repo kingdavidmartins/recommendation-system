@@ -62,7 +62,7 @@ const simUserSort = (mainUser, userSet, p) =>
     .sort((a, b) => a[1] - b[1]);
 
 
-// filter out the users cannot recommend since the user listened to all the band the mainUser listened to
+// filter out the users cannot recommend since the user watched all the movies the mainUser watched to
 const getSimNewRatings = (mUser, p) =>
   _.chain(simUserSort(mUser, users, p)
     .map((value) => value[0]))
@@ -110,7 +110,7 @@ const pearson = (user1, user2) =>
   );
 
 
-// recommend artist the user never listened to based on the nearest neighbor likes sorted from highest rating to lowesrt
+// recommend movies the user never watched based on the nearest neighbor likes sorted from highest rating to lowesrt
 const recommend = (mUser, userSet, p) =>
 _.find(userSet, {name: getSimNewRatings(mUser, p)})
   .ratings

@@ -38,7 +38,7 @@ sys     0m0.030s
 ```
 # Hardware ~ (HP Spectre x360, 2.7 GHz i7-7500U CPU):
 $ time node generate.js
-real    0m2.159s
+real    1m0.463s
 user    0m0.100s
 sys     0m0.030s
 ```
@@ -48,7 +48,7 @@ sys     0m0.030s
 ```
 # Hardware ~ (HP Spectre x360, 2.7 GHz i7-7500U CPU):
 $ time node generate.js
-real    0m3.163s
+real    1m17.969s
 user    0m0.282s
 sys     0m0.030s
 ```
